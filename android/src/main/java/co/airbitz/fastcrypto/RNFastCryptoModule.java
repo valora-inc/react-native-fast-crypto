@@ -8,6 +8,9 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableNativeArray;
 
 
 public class RNFastCryptoModule extends ReactContextBaseJavaModule {
@@ -47,6 +50,28 @@ public class RNFastCryptoModule extends ReactContextBaseJavaModule {
             Promise promise) {
         try {
             String reply = scryptJNI(passwd, salt, N, r, p, size); // test response from JNI
+            promise.resolve(reply);
+        } catch (Exception e) {
+            promise.reject("Err", e);
+        }
+    }
+
+    @ReactMethod
+    public void scryptBulk(
+            ReadableArray passwds,
+            String salt,
+            Integer N,
+            Integer r,
+            Integer p,
+            Integer size,
+            Promise promise) {
+        try {
+            WritableArray reply = new WritableArray();
+            for (int i=0; i < passwds.size(); i++) {
+                String passwd = passwds.getString(i);
+                String hash = scryptJNI(passwd, salt, N, r, p, size);
+                reply.pushString(hash);
+            }
             promise.resolve(reply);
         } catch (Exception e) {
             promise.reject("Err", e);
