@@ -1,6 +1,6 @@
 {
   "name": "@celo/react-native-fast-crypto",
-  "version": "1.8.3",
+  "version": "2.0.0",
   "description": "Native C/C++ implemented crypto libraries for React Native apps",
   "keywords": [
     "react-native",
@@ -16,17 +16,23 @@
   "license": "MIT",
   "author": "Edge",
   "contributors": [
-    "Paul Puey <paul@edge.app>"
+    "Paul Puey <paul@edge.app>",
+    "William Swanson <william@edge.app>"
   ],
+  "main": "index.js",
   "files": [
     "android/*",
     "index.js",
-    "ios/*",
+    "ios/Headers",
+    "ios/Libraries/libnativecrypto.a",
+    "ios/Libraries/libsecp256k1.a",
+    "ios/RNFastCrypto.h",
+    "ios/RNFastCrypto.m",
+    "ios/RNFastCrypto.xcodeproj",
     "package.json",
     "react-native-fast-crypto.podspec",
     "README.md"
   ],
-  "main": "index.js",
   "scripts": {
     "build": "echo OK",
     "build:native": "./build-deps"

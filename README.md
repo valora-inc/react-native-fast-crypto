@@ -22,8 +22,8 @@ This library implements fast, fully native crypto routines for React Native unde
 
 #### Install in Android app
 
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNFastCryptoPackage;` to the imports at the top of the file
+1. Open up `android/app/src/main/java/[...]/MainApplication.java`
+  - Add `import co.airbitz.fastcrypto.RNFastCryptoPackage;` to the imports at the top of the file
   - Add `new RNFastCryptoPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
@@ -44,6 +44,7 @@ const salt = new Uint8Array([45, 124, 45, 29, 172, 238, 35])
 
 const result: Uint8Array = await crypto.scrypt(data, salt, 16384, 8, 1, 32)
 console.log(result)
+```
 
 ## Build the C/C++ binaries from scratch (optional)
 
