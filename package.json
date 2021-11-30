@@ -38,7 +38,7 @@
     "build:native": "./build-deps"
   },
   "dependencies": {
-    "buffer": "^5.0.8",
+    "buffer": "^5.7.1",
     "rfc4648": "^1.0.0"
   },
   "peerDependencies": {
